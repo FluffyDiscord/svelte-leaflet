@@ -19,10 +19,14 @@
 </script>
 
 <div class="example">
-    <LeafletMap options={mapOptions}>
+    <LeafletMap options={mapOptions} clustered>
         <TileLayer url={tileUrl} options={tileLayerOptions}/>
         <Marker latLng={[1.282375, 103.864273]}/>
         <Marker latLng={[1.359167, 103.989441]} rotationAngle={45}/>
+        <Marker latLng={[1.359167, 103.979441]} rotationAngle={45}/>
+        <Marker latLng={[1.359167, 103.969441]} rotationAngle={45}/>
+        <Marker latLng={[1.359167, 103.959441]} rotationAngle={45}/>
+        <Marker latLng={[1.359167, 103.949441]} rotationAngle={45}/>
     </LeafletMap>
 </div>
 ```

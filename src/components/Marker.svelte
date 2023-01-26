@@ -4,7 +4,7 @@
 
     import EventBridge from '../lib/EventBridge';
 
-    const {getMap} = getContext(L);
+    const {getMap, getClusterGroup} = getContext(L);
 
     const defaultIcon = L.icon({
         iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
@@ -41,7 +41,7 @@
 
     $: {
         if (!marker) {
-            marker = L.marker(latLng, options).addTo(getMap());
+            marker = L.marker(latLng, options).addTo(getClusterGroup() ?? getMap());
             eventBridge = new EventBridge(marker, dispatch, events);
         }
         marker.setLatLng(latLng);
@@ -55,7 +55,7 @@
 
     onDestroy(() => {
         eventBridge.unregister();
-        marker.removeFrom(getMap());
+        marker.removeFrom(getClusterGroup() ?? getMap());
     });
 
     export function getMarker() {
